@@ -20,8 +20,12 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: dotnet restore
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
+      - name: Change AppSettings
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: 'Agenda/appsettings.json'
+        env:
+          ConnectionStrings.AgendaContext: ${{ secrets.MYSQL_CONNECTION }}
       - name: Deploy
         run: |
             cd Agenda/
