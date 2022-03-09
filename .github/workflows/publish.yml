@@ -28,9 +28,8 @@ jobs:
           ConnectionStrings.AgendaContext: ${{ secrets.MYSQL_CONNECTION }}
       - name: Deploy
         run: |
-            echo ${{ secrets.MYSQL_CONNECTION }}
             cd Agenda/
-            echo appsettings.json
+            cat appsettings.json
             dotnet tool install -g Amazon.ElasticBeanstalk.Tools
             dotnet restore
             sudo apt-get update
