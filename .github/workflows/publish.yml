@@ -24,7 +24,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
       - name: Deploy
         run: |
-            cd Calendar/
+            cd Agenda/
             dotnet tool install -g Amazon.ElasticBeanstalk.Tools
             dotnet restore
             sudo apt-get update
