@@ -38,7 +38,7 @@ namespace Agenda.Repository
                 });
             }
             
-            var toDelete = _context.Pessoas.FirstOrDefault(p => p.Equals(nome)) ?? throw new DefaultException(new ErrorResponse
+            var toDelete = _context.Pessoas.FirstOrDefault(p => p.Nome.Equals(nome)) ?? throw new DefaultException(new ErrorResponse
             {
                 Message = "Nenhuma pessoa com este nome foi encontrada.",
                 StatusCode = (int)HttpStatusCode.NotFound
