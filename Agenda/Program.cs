@@ -17,7 +17,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 services.AddDbContext<AppDbContext>(opt => opt.UseMySql(configuration.GetConnectionString("AgendaContext"), ServerVersion.AutoDetect(configuration.GetConnectionString("AgendaContext"))));
-Console.WriteLine(configuration.GetConnectionString("AgendaContext"));
 services.AddScoped<IPessoaRepository, PessoaRepository>();
 services.Configure<ApiBehaviorOptions>(options =>
 {

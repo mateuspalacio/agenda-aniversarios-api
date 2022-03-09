@@ -101,7 +101,7 @@ namespace Agenda.Repository
                     StatusCode = (int)HttpStatusCode.BadRequest
                 });
             }
-            var pplByFirstLetter = _context.Pessoas.Where(p => p.Nome.StartsWith(letraInicial)).ToList() ?? throw new DefaultException(new ErrorResponse
+            var pplByFirstLetter = _context.Pessoas.Where(p => p.Nome.StartsWith(letraInicial.ToString().ToLower())).ToList() ?? throw new DefaultException(new ErrorResponse
             {
                 Message = "Nenhuma pessoa com esta letra inicial foi encontrada.",
                 StatusCode = (int)HttpStatusCode.NotFound

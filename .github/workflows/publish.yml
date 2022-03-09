@@ -29,7 +29,6 @@ jobs:
       - name: Deploy
         run: |
             cd Agenda/
-            cat appsettings.json
             dotnet tool install -g Amazon.ElasticBeanstalk.Tools
             dotnet restore
             sudo apt-get update
