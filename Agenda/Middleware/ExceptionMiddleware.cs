@@ -25,14 +25,7 @@ namespace Agenda.Middleware
                     response.StatusCode = error.ErrorResponse.StatusCode;
                     context.Response.StatusCode = error.ErrorResponse.StatusCode;
                     await context.Response.WriteAsJsonAsync(response);
-                } else if (ex is InvalidOperationException err)
-                {
-                    var response = new Error() { };
-                    response.Message = err.Message;
-                    response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    await context.Response.WriteAsJsonAsync(response);
-                }
+                } 
             }
 
         }

@@ -38,11 +38,7 @@ namespace Agenda.Repository
                 });
             }
             
-            var toDelete = _context.Pessoas.FirstOrDefault(p => p.Nome.Equals(nome)) ?? throw new DefaultException(new ErrorResponse
-            {
-                Message = "Nenhuma pessoa com este nome foi encontrada.",
-                StatusCode = (int)HttpStatusCode.NotFound
-            }); 
+            var toDelete = _context.Pessoas.FirstOrDefault(p => p.Nome.Equals(nome)); 
             if(toDelete is null)
             {
                 throw new DefaultException(new ErrorResponse
@@ -67,11 +63,7 @@ namespace Agenda.Repository
                     StatusCode = (int)HttpStatusCode.BadRequest
                 });
             }
-            var toUpdate = _context.Pessoas.FirstOrDefault(pp => pp.Nome == p.Nome) ?? throw new DefaultException(new ErrorResponse
-            {
-                Message = "Nenhuma pessoa com este nome foi encontrada.",
-                StatusCode = (int)HttpStatusCode.NotFound
-            });
+            var toUpdate = _context.Pessoas.FirstOrDefault(pp => pp.Nome == p.Nome);
             if (toUpdate is null)
             {
                 throw new DefaultException(new ErrorResponse
@@ -97,11 +89,7 @@ namespace Agenda.Repository
                     StatusCode = (int)HttpStatusCode.BadRequest
                 });
             }
-            var pplByDayMonth = _context.Pessoas.Where(p => p.DiaNascimento == dia && p.MesNascimento == mes).ToList() ?? throw new DefaultException(new ErrorResponse
-             {
-                 Message = "Nenhuma pessoa com esta data de nascimento foi encontrada.",
-                 StatusCode = (int)HttpStatusCode.NotFound
-             });
+            var pplByDayMonth = _context.Pessoas.Where(p => p.DiaNascimento == dia && p.MesNascimento == mes).ToList();
             if (!pplByDayMonth.Any() || pplByDayMonth is null)
             {
                 throw new DefaultException(new ErrorResponse
@@ -123,11 +111,7 @@ namespace Agenda.Repository
                     StatusCode = (int)HttpStatusCode.BadRequest
                 });
             }
-            var pplByFirstLetter = _context.Pessoas.Where(p => p.Nome.StartsWith(letraInicial.ToString().ToLower())).ToList() ?? throw new DefaultException(new ErrorResponse
-            {
-                Message = "Nenhuma pessoa com esta letra inicial foi encontrada.",
-                StatusCode = (int)HttpStatusCode.NotFound
-            }); ;
+            var pplByFirstLetter = _context.Pessoas.Where(p => p.Nome.StartsWith(letraInicial.ToString().ToLower())).ToList();
             if (!pplByFirstLetter.Any() || pplByFirstLetter is null)
             {
                 throw new DefaultException(new ErrorResponse
@@ -151,11 +135,7 @@ namespace Agenda.Repository
                     StatusCode = (int)HttpStatusCode.BadRequest
                 });
             }
-            var pplByMonth = _context.Pessoas.Where(p => p.MesNascimento == mes).ToList() ?? throw new DefaultException(new ErrorResponse
-            {
-                Message = "Nenhuma pessoa foi encontrada neste mês.",
-                StatusCode = (int)HttpStatusCode.NotFound
-            }); 
+            var pplByMonth = _context.Pessoas.Where(p => p.MesNascimento == mes).ToList(); 
             if (!pplByMonth.Any() || pplByMonth is null)
             {
                 throw new DefaultException(new ErrorResponse
@@ -170,11 +150,7 @@ namespace Agenda.Repository
         public async Task<List<Pessoa>> GetPessoasOrderedByMes()
         {
             
-            var pplByMonthOrder = _context.Pessoas.OrderBy(m => m.MesNascimento).ToList() ?? throw new DefaultException(new ErrorResponse
-            {
-                Message = "Nenhuma pessoa foi encontrada.",
-                StatusCode = (int)HttpStatusCode.NotFound
-            });
+            var pplByMonthOrder = _context.Pessoas.OrderBy(m => m.MesNascimento).ToList();
             if (!pplByMonthOrder.Any() || pplByMonthOrder is null)
             {
                 throw new DefaultException(new ErrorResponse
@@ -188,11 +164,7 @@ namespace Agenda.Repository
 
         public async Task<List<Pessoa>> GetPessoasOrderedByNome()
         {
-            var pplByNameOrder = _context.Pessoas.OrderBy(m => m.Nome).ToList() ?? throw new DefaultException(new ErrorResponse
-            {
-                Message = "Nenhuma pessoa foi encontrada.",
-                StatusCode = (int)HttpStatusCode.NotFound
-            }); ;
+            var pplByNameOrder = _context.Pessoas.OrderBy(m => m.Nome).ToList();
             if (!pplByNameOrder.Any() || pplByNameOrder is null)
             {
                 throw new DefaultException(new ErrorResponse

@@ -1,5 +1,5 @@
 using Agenda.Exceptions;
-using Agenda.Filters;
+using Agenda.Middleware;
 using Agenda.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +36,8 @@ app.UseSwaggerUI();
 //}
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthorization();
 
