@@ -1,5 +1,4 @@
 using Agenda.Exceptions;
-using Agenda.Filters;
 using Agenda.Models;
 using Agenda.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +8,6 @@ namespace Agenda.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [ValidateModelAttribute]
     public class AgendaController : ControllerBase
     {
         
